@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <package name="user" extends="struts-default" namespace="/user">
+        <action name="login" class="com.wzh.action.UserAction" method="execute">
+            <result name="success" type="redirectAction">
+                <param name="namespace">/product</param>
+                <param name="actionName">queryProducts</param>
+            </result>
+        </action>
+    </package>
+    <package name="product" extends="struts-default" namespace="/product">
+        <action name="queryProducts" class="com.wzh.action.ProductAction" method="queryProducts">
+            <result name="success">/productView.jsp</result>
+        </action>
+    </package>
+    <package name="cart" extends="struts-default" namespace="/cart">
+        <action name="cart_*" class="com.wzh.action.CartAction" method="{1}">
+            <result name="success">/cart.jsp</result>
+        </action>
+    </package>
+</struts>
